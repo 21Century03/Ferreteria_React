@@ -1,4 +1,4 @@
-import React from "react"
+
 const InputIndexNombre = ({ id, type, value, onChange, placeholder }) => {
   return (
     <input

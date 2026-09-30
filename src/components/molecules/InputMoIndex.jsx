@@ -1,5 +1,4 @@
-import React from "react"
-import InputIndex from "../atoms/InputIndex"
+import InputIndex from "../atoms/Input"
 
 const InputMoIndex = ({ id, type, value, onChange, placeholder }) => {
   return (
