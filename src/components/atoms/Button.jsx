@@ -1,14 +1,12 @@
-
-const ButtonIndexForm = ({ onClick, children, EstaCorrecto }) => {
+function ButtonIndexForm(prop) {
   return (
     <button
-     onClick={onClick}
-     className={EstaCorrecto ? 'correcto' : 'incorrecto'}
-    
+      onClick={prop.onClick}
+      className={prop.estaCorrecto ? 'correcto' : 'incorrecto'}
     >
-      {children}
+      {prop.children}
     </button>
-  )
+  );
 }
 
-export default ButtonIndexForm
+export default ButtonIndexForm;

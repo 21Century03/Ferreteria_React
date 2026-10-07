@@ -1,9 +1,9 @@
 import Etiqueta from "../atoms/etiqueta"
-import Logo from "../atoms/Logo"
+
 function Header (){
     return (
 <header>
-<logo/>
+
 <nav>
     <ul>
         <li> <Etiqueta texto = "inicio" /></li>

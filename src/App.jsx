@@ -1,8 +1,8 @@
+import CatalogoTemplate from "./components/templates/CatalogoTemplate"
 function App() {
   return (
-    <div>
-      <h1>Mi nuevo proyecto</h1>
-    </div>
+    
+      <CatalogoTemplate/>
   )
 }
 
