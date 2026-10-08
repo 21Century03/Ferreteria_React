@@ -1,9 +1,17 @@
-function App() {
-  return (
-    <div>
-      <h1>Mi nuevo proyecto</h1>
-    </div>
-  )
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SansLogin from "./components/templates/SansLogin";
 
-export default App
+import "./App.css";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SansLogin />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
+

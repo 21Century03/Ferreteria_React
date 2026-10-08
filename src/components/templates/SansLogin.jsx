@@ -1,30 +1,24 @@
-import organismoIndex from '../organisms/organismoIndex';
+import Navbar from "../organisms/navbar";
+import FormularioIndex from "../organisms/organismoIndex";
 
-fuction 
-
-function SansLogin() {
-    return (
-        <div>
-            <organismoIndex />
-        </div>
-    );
-}
-
-
-function Footer() {
-  return <footer><p>© 2026 Ferreteria Los Maestros</p></footer>;
-}
-
-
-function SansLoginTemplate() { /* Esto devuelve todo el template,su contenido se exporta para despues usarlo en el Login */ 
+const Footer = () => {
   return (
-    <div className="page-container">
-      <SansLogin />
-      <Footer />
+    <footer>
+      <p>© 2026 Ferretería Los Maestros</p>
+    </footer>
+  );
+};
+
+const SansLoginTemplate = () => {
+  return (
+    <div>
+      <Navbar />         
+      <main>
+        <FormularioIndex /> 
+      </main>
+      <Footer />          
     </div>
   );
-}
-
-
+};
 
 export default SansLoginTemplate;

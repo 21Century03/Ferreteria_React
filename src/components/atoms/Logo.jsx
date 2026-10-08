@@ -1,10 +1,12 @@
 
 
 /* Importar el logo logo.css etc del Header @Isahac*/
-export const logo = ({src,alt}) => {
-    return (
-        <div>
-            <img src={src} alt={alt} />
-        </div>
-    );
-}
+
+import logoImg from "../assets/Ferreteri.jpg";
+
+// Componente con MAYÚSCULA (si no, React lo toma como etiqueta HTML)
+const Logo = ({ alt = "Logo Ferretería Los Maestros" }) => {
+  return <img className="logo" src={logoImg} alt={alt} />;
+};
+
+export default Logo;
