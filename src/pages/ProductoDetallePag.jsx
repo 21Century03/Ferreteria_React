@@ -1,0 +1,10 @@
+import Planilla from "../components/templates/CatalogoTemplate"
+import Producto from "../components/organisms/ItemSolo"
+
+function ProductoDetallePag (){
+        return (
+    <Planilla>
+        <Producto/>
+    </Planilla>)
+}
+export default ProductoDetallePag

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../atoms/Logo";
+
 
 function Navbar() {
   const [abierto, setAbierto] = useState(false);
@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <header className="navbar-fm">
       <NavLink to="/" onClick={cerrar} className="navbar-fm__marca">
-        <Logo />
+       
         <span>Ferretería Los Maestros</span>
       </NavLink>
 

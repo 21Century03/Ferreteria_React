@@ -1,12 +1,12 @@
 
-const InputIndexNombre = ({ id, type, value, onChange, placeholder }) => {
+const InputIndexNombre = ( props ) => {
   return (
     <input
-      id={id}
-      type={type}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
+      id={props.id}
+      type={props.type}
+      value={props.value}
+      onChange={props.onChange}
+      placeholder={props.placeholder}
     />
   )
 }

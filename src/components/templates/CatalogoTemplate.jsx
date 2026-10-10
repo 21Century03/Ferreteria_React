@@ -1,12 +1,15 @@
 import Cabezera from "../organisms/Header"
-import Catalogo from "../organisms/Catalogo"
 
-function CatalogoTemplate (){
+import Footer from "../organisms/Footer"
+
+
+function CatalogoTemplate ({children}){
     return ( <>
         <Cabezera/>
-        <Catalogo/>
-        <footer><p>© 2026 Ferreteria Los Maestros</p></footer>
-
+        <main className = "principal">
+            {children}
+        </main>
+        <Footer/>
      </>
     )
 }

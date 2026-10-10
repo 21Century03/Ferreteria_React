@@ -1,10 +1,14 @@
 import Etiqueta from "../atoms/etiqueta"
-function Item(prop){
+import { Link } from "react-router-dom"
+function Item(props){
   return  (<>
-  <section>
-<Etiqueta texto = {prop.nombre} />
-<Etiqueta texto = {prop.precio}/>
-<Etiqueta texto = {prop.stock}/>
+  <section className="etiqueta">
+<p> <Etiqueta texto = {props.nombre} /></p>
+<p> Precio:  $<Etiqueta texto = {props.precio} /></p>
+<p> Cantidad disponible: <Etiqueta texto = {props.stock} /></p>
+<Link to={`/catalogo/${props.codigo}`} className="btn-ver-mas">
+        Ver detalle
+</Link>
 </section>
 
 </>

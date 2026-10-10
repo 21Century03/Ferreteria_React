@@ -1,5 +1,6 @@
-import Navbar from "../organisms/Navbar";
+import Navbar from "../organisms/NavBar";
 import Footer from "../organisms/Footer";
+
 
 function PlantillaPublica({ children }) {
   return (
