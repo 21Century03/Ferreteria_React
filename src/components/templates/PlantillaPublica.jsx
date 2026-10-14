@@ -1,6 +1,6 @@
-import Navbar from "../organisms/NavBar";
-import Footer from "../organisms/Footer";
-
+import Navbar from "../organisms/NavBar/NavBar";
+import Footer from "../organisms/Footer/Footer";
+import './PlantillaPublica.css';
 
 function PlantillaPublica({ children }) {
   return (

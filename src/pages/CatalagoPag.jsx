@@ -1,5 +1,5 @@
-import CatalogoTemplate from "../components/templates/CatalogoTemplate"
-import Catalogo from "../components/organisms/Catalogo"
+import CatalogoTemplate from "../components/templates/CatalogoTemplate";
+import Catalogo from "../components/organisms/Catalogo/Catalogo";
 function CatalogoPag(){
     return (
     <CatalogoTemplate>

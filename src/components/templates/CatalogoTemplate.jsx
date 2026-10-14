@@ -1,7 +1,5 @@
-import Cabezera from "../organisms/Header"
-
-import Footer from "../organisms/Footer"
-
+import Cabezera from "../organisms/Header/Header";
+import Footer from "../organisms/Footer/Footer";
 
 function CatalogoTemplate ({children}){
     return ( <>

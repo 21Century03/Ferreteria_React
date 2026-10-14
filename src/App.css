@@ -1,56 +1,27 @@
+:root {
+  --marca: #f77f00;          
+  --marca-hover: #d62828;
+  --fondo: #1b1d20;
+  --fondo-panel: #25282c;
+  --texto: #e9ecef;
+}
+ 
 * {
-
- box-sizing: border-box;
-
- margin: 0;
-
- padding: 0;
-
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
+ 
 html {
-
   scroll-behavior: smooth;
-
 }
-
-
-
-
-
-
-.campo-error {
-
- border: 2px solid #cf1323 !important;
-
- background: #fbe9ea;
-
+ 
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
 }
+ 
 
 
-
-.campo-check {
-
- border: 2px solid #59e70d !important;
-
- background: #fbe9ea;
-
-}
-
-.tarjeta-producto {
-  display: grid;
-  /* Crea columnas automáticas de mínimo 220px */
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-  gap: 20px; /* Separación/espacio entre cada tarjeta */
-  padding: 20px 0;
-}
-.etiqueta{
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 16px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombrita sutil */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}

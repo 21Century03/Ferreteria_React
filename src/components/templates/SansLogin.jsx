@@ -1,4 +1,4 @@
-import organismoIndex from '../organisms/organismoIndex';
+import organismoIndex from '../../organisms/organismoIndex';
 
 fuction 
 
