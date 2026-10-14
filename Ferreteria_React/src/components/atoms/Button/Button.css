@@ -1,0 +1,28 @@
+.correcto,
+.incorrecto {
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+ 
+.correcto {
+  background: var(--marca);
+  color: #fff;
+}
+ 
+.correcto:hover {
+  background: var(--marca-hover);
+}
+ 
+.incorrecto {
+  background: #6c757d;
+  color: #fff;
+}
+ 
+.incorrecto:hover {
+  background: #565e64;
+}

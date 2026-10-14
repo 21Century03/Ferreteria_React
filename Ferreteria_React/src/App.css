@@ -1,0 +1,27 @@
+:root {
+  --marca: #f77f00;          
+  --marca-hover: #d62828;
+  --fondo: #1b1d20;
+  --fondo-panel: #25282c;
+  --texto: #e9ecef;
+}
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+ 
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+ 
+
+
