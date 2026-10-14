@@ -54,8 +54,10 @@ function ItemSolo() {
         />
 
         <ButtonIndexForm
+          type= "button"
           onClick={() => console.log("Añadido al carrito:", producto, cantidad)}
-          estaCorrecto={true}
+          className="boton-enviar"
+          
         >
           Agregar al Carrito
         </ButtonIndexForm>

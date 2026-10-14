@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import './NavBar.css';
-
+import Boton from "../../atoms/Button/Button"
 function Navbar() {
   const [abierto, setAbierto] = useState(false);
   const cerrar = () => setAbierto(false);
@@ -13,7 +13,7 @@ function Navbar() {
         <span>Ferretería Los Maestros</span>
       </NavLink>
 
-      <button
+      <Boton
         type="button"
         className="navbar-fm__toggle"
         aria-label="Abrir menú"
@@ -21,11 +21,12 @@ function Navbar() {
         onClick={() => setAbierto(!abierto)}
       >
         {abierto ? "✖" : "☰"}
-      </button>
+      </Boton>
 
       <nav className={`navbar-fm__menu ${abierto ? "navbar-fm__menu--abierto" : ""}`}>
         <NavLink to="/" end onClick={cerrar}>Inicio</NavLink>
         <NavLink to="/catalogo" onClick={cerrar}>Catálogo</NavLink>
+        <NavLink to= "/inicio-sesion" onClick={cerrar}>Iniciar Sesión</NavLink>
       </nav>
     </header>
   );

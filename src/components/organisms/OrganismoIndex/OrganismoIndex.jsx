@@ -1,7 +1,7 @@
 
 import { useState } from "react"
-import InputMonIndex from "../molecules/InputMoIndex"
-import Button from "../atoms/Button"
+import InputMonIndex from "../../molecules/InputMoIndex/InputMoIndex"
+import ButtonIndexForm from "../../atoms/Button/Button"
 
 /*
 Definicion de Const y Booleans
@@ -37,17 +37,17 @@ const FormularioIndex = () => {
                 placeholder="Escribe tu Nombre"
             />
 
-            <Button
+            <ButtonIndexForm
                 onClick={validarFormulario}
                 EsCorrecto ={EsCorrecto} /* Se aclara k el Prop es un codigo JS */
 
                 /* Se le da  children de Button el prop "validar"*/
             >
                 Validar 
-            </Button>
+            </ButtonIndexForm>
      
         </div>
     )
 }
 
-export default FormularioIndex
+export default FormularioIndex;

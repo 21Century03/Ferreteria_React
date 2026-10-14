@@ -1,10 +1,11 @@
-import CatalogoTemplate from "../components/templates/CatalogoTemplate";
+
 import Catalogo from "../components/organisms/Catalogo/Catalogo";
+import PlantillaPublica from "../components/templates/PlantillaPublica"
 function CatalogoPag(){
     return (
-    <CatalogoTemplate>
+    <PlantillaPublica>
         <Catalogo/>
-    </CatalogoTemplate>)
+    </PlantillaPublica>)
 }
 
 export default CatalogoPag

@@ -1,4 +1,4 @@
-import Planilla from "../components/templates/CatalogoTemplate"
+import Planilla from "../components/templates/PlantillaPublica"
 import Producto from "../components/organisms/ItemSolo/ItemSolo"
 
 function ProductoDetallePag (){

@@ -1,20 +1,20 @@
-import InputIndex from "../atoms/Input"
+import InputIndex from "../../atoms/Input/Input";
 import './InputMoIndex.css';
 
-const InputMoIndex = ({ id, type, value, onChange, placeholder }) => {
+function InputMoIndex(prop) {
   return (
     <div className="grupo-campo">
-        <label htmlFor={id}>{"label-text"}</label>
+      <label htmlFor={prop.id}>{prop.label || "Nombre"}</label>
 
-    <InputIndex
-      id={id}
-      type={type}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-    />
+      <InputIndex
+        id={prop.id}
+        type={prop.type}
+        value={prop.value}
+        onChange={prop.onChange}
+        placeholder={prop.placeholder}
+      />
     </div>
-  )
+  );
 }
 
-export default InputMoIndex 
+export default InputMoIndex;
