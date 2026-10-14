@@ -1,11 +1,12 @@
-import organismoIndex from '../../organisms/organismoIndex';
+import Login from "../organisms/Login/Login";
+import './PlantillaPublica.css';
 
-fuction 
+
 
 function SansLogin() {
     return (
         <div>
-            <organismoIndex />
+            <Login />
         </div>
     );
 }

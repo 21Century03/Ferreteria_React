@@ -26,6 +26,7 @@ function Navbar() {
       <nav className={`navbar-fm__menu ${abierto ? "navbar-fm__menu--abierto" : ""}`}>
         <NavLink to="/" end onClick={cerrar}>Inicio</NavLink>
         <NavLink to="/catalogo" onClick={cerrar}>Catálogo</NavLink>
+        <NavLink to="/login" onClick={cerrar}>Login</NavLink>
       </nav>
     </header>
   );

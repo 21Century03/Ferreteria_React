@@ -8,6 +8,7 @@ const InputIndexNombre = ( props ) => {
       value={props.value}
       onChange={props.onChange}
       placeholder={props.placeholder}
+      className={"input " + (props.className || "")}
     />
   )
 }
