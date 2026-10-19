@@ -5,11 +5,13 @@ import { ImgProductos } from "../../../data/ImgProductos"
 import Input from "../../atoms/Input/Input"
 import ButtonIndexForm from "../../atoms/Button/Button"
 import "./ItemSolo.css"
-
+import SelectorDesp from "../../molecules/SelectorDesp/SelectorDesp"
+import Item from "../../molecules/ItemForma/itemForma"
 function ItemSolo() {
   const { codigo } = useParams()
   const navigate = useNavigate()
   const [cantidad, setCantidad] = useState("")
+  const [MetodoEnvio,setMetodoEnvio] = useState("")
   const producto = productos.find(
     (item) => String(item["Código"]) === String(codigo)
   )
@@ -43,7 +45,14 @@ function ItemSolo() {
       <p><strong>Código:</strong> {producto["Código"]}</p>
       <p><strong>Precio:</strong> ${producto["P. Venta (CLP)"]}</p>
       <p><strong>Stock disponible:</strong> {producto["Stock"]} unidades</p>
+      
 
+      <SelectorDesp 
+        etiqueta = "Seleccione metodo de envio"
+        id="metodo-envio"
+        label="Método de envío"
+        value={MetodoEnvio}
+        onChange={(e) => setMetodoEnvio(e.target.value)}/>
       <section className="acciones-compra">
         <Input
           id="cantidad-producto"
@@ -52,7 +61,6 @@ function ItemSolo() {
           onChange={manejarCambio}
           placeholder="Ingresar la cantidad deseada"
         />
-
         <ButtonIndexForm
           onClick={() => console.log("Añadido al carrito:", producto, cantidad)}
           estaCorrecto={true}
@@ -60,6 +68,7 @@ function ItemSolo() {
           Agregar al Carrito
         </ButtonIndexForm>
       </section>
+
     </section>
   )
 }

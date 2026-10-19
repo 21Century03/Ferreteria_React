@@ -1,6 +1,6 @@
 import './Input.css';
 
-const InputIndexNombre = ( props ) => {
+function InputIndexNombre(props) {
   return (
     <input
       id={props.id}
@@ -10,7 +10,7 @@ const InputIndexNombre = ( props ) => {
       placeholder={props.placeholder}
       className={"input " + (props.className || "")}
     />
-  )
+  );
 }
 
-export default InputIndexNombre
+export default InputIndexNombre;

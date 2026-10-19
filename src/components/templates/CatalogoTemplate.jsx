@@ -1,4 +1,4 @@
-import Cabezera from "../organisms/Header/Header";
+import Cabezera from "../organisms/NavBar/NavBar"
 import Footer from "../organisms/Footer/Footer";
 
 function CatalogoTemplate ({children}){
