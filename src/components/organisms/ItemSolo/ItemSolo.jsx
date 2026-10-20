@@ -7,9 +7,13 @@ import ButtonIndexForm from "../../atoms/Button/Button"
 import "./ItemSolo.css"
 import SelectorDesp from "../../molecules/SelectorDesp/SelectorDesp"
 import Item from "../../molecules/ItemForma/itemForma"
+import { useCard } from "../../../context/ContextoCard"
+
+
 function ItemSolo() {
   const { codigo } = useParams()
   const navigate = useNavigate()
+  const { agregarProducto } = useCard()
   const [cantidad, setCantidad] = useState("")
   const [MetodoEnvio,setMetodoEnvio] = useState("")
   const producto = productos.find(
@@ -28,6 +32,24 @@ function ItemSolo() {
   }
 
   const manejarCambio = (e) => setCantidad(e.target.value)
+  const manejarAgregar = () => {
+  const cantidadNumero = Number(cantidad)
+
+  if (cantidadNumero < 1) {
+    alert("Ingresa una cantidad válida")
+    return
+  }
+
+  const itemCarrito = {
+    id: producto["Código"],
+    nombre: producto["Nombre del producto"],
+    precio: Number(producto["P. Venta (CLP)"]),
+  }
+
+  agregarProducto(itemCarrito, cantidadNumero)
+  alert("El producto fue añadido al carrito")
+  navigate("/carrito")
+}
 
   return (
     <section className="detalle-producto">
@@ -62,7 +84,7 @@ function ItemSolo() {
           placeholder="Ingresar la cantidad deseada"
         />
         <ButtonIndexForm
-          onClick={() => console.log("Añadido al carrito:", producto, cantidad)}
+          onClick={manejarAgregar}
           estaCorrecto={true}
         >
           Agregar al Carrito
