@@ -93,10 +93,10 @@ const archivoPorCodigo = {
   MD004: "MDF15mm.jpg",
   MD005: "OSB9mm.jpg",
   MD006: "Volcanita10mm12x24.webp",
-  MD007: "VolcanitaHumeda10mm.jpg",
+  MD007: "VolcanitaHumedad10mm.jpg",
   // Seguridad
   SE001: "CascoSegBlanco.webp",
-  SE002: "GuantesCueroL.webp",
+  SE002: "GunatesCueroL.webp",
   SE003: "AntiparrasClear.jpg",
   SE004: "MascarillaRespN95.webp",
   SE005: "Arnes1punto.webp",
