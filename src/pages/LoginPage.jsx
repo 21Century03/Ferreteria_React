@@ -1,6 +1,12 @@
-import SansLogin from '../components/templates/SansLogin';
+
+import Plantilla from "../components/templates/PlantillaPublica"
+import Login from "../components/organisms/Login/Login";
 function LoginPage() {
-  return <SansLogin />;
+  return ( 
+   <Plantilla>
+    <Login/>
+  </Plantilla>)
+
 }
 
 export default LoginPage;

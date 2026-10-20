@@ -7,8 +7,7 @@ import "./ItemSolo.css"
 import SelectorDesp from "../../molecules/SelectorDesp/SelectorDesp"
 import Item from "../../molecules/ItemForma/itemForma"
 import { useInventario } from "../../../data/CopiaInventario"
-import { hayStockSuficiente } from "../../../Service/Funciones"
-
+import { validarCompra } from "../../../Service/Funciones"
 function ItemSolo() {
   const params = useParams()
   const navigate = useNavigate()
@@ -16,6 +15,7 @@ function ItemSolo() {
   const [metodoEnvio,setmetodoEnvio] = useState("")
   const inventario = useInventario()
    const [mensaje, setMensaje] = useState("")
+
   const producto = inventario.productos.find(
     (item) => String(item["Código"]) === String(params.codigo)
   )
@@ -35,19 +35,19 @@ function ItemSolo() {
   setMensaje("")}
   const manejarCompra = () => {
   const cantidadNumero = Number(cantidad)
-
-    if (metodoEnvio === "") {
-      setMensaje("Seleccione un método de envío")
-      return
-    }
-    if (!hayStockSuficiente(producto, cantidadNumero)) {
-      setMensaje("Cantidad no válida o sin stock suficiente")
-      return
-    } 
-    inventario.comprar(producto["Código"], cantidadNumero)
-    setCantidad("")
-    setMensaje("Producto agregado correctamente")
+  const error = validarCompra(producto, cantidadNumero, metodoEnvio)
+   
+  if (error !== "") {
+    setMensaje(error)
+    return
   }
+  inventario.comprar(producto["Código"], cantidadNumero)
+  setCantidad("")
+  setMensaje("Producto agregado correctamente")
+}
+
+
+  
 
   return (
     <section className="detalle-producto">

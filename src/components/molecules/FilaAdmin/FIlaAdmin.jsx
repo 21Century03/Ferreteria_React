@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Input from "../../atoms/Input/Input"
 import ButtonIndexForm from "../../atoms/Button/Button"
+import { validarStock } from "../../../Service/Funciones"
 
 function FilaAdmin(props) {
   const [stock, setStock] = useState(String(props.stock))
@@ -8,22 +9,11 @@ function FilaAdmin(props) {
   const [mensaje, setMensaje] = useState("")
 
   const manejarGuardar = () => {
-    const stockNumero = Number(stock)
-
-
-    if (stock === "" ) {
-      setMensaje("Complete el stock")
+    const error = validarStock(stock)
+      if (error !== "") {
+      setMensaje(error)
       return
     }
-    if (!Number.isInteger(stockNumero)) {
-      setMensaje("Use números enteros")
-      return
-    }
-    if (stockNumero < 0 ) {
-      setMensaje("No se permiten negativos")
-      return
-    }
-
     setMensaje("")
     props.onGuardar(props.codigo, stockNumero)
   }

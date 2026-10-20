@@ -35,3 +35,26 @@ export function modificarProducto(productos, codigo, nuevoStock) {
     return copia
   })
 }
+
+export function validarStock(stock) {
+  if (stock === "") {
+    return "Complete el stock"
+  }
+  if (!Number.isInteger(Number(stock))) {
+    return "Use números enteros"
+  }
+  if (Number(stock) < 0) {
+    return "No se permiten negativos"
+  }
+  return ""
+}
+
+export function validarCompra(producto, cantidad, metodoEnvio) {
+  if (metodoEnvio === "") {
+    return "Seleccione un método de envío"
+  }
+  if (!hayStockSuficiente(producto, cantidad)) {
+    return "Cantidad no válida o sin stock suficiente"
+  }
+  return ""
+}
