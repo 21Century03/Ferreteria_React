@@ -1,19 +1,23 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { productos } from "../../../data/productos"
 import { ImgProductos } from "../../../data/ImgProductos"
 import Input from "../../atoms/Input/Input"
 import ButtonIndexForm from "../../atoms/Button/Button"
 import "./ItemSolo.css"
 import SelectorDesp from "../../molecules/SelectorDesp/SelectorDesp"
 import Item from "../../molecules/ItemForma/itemForma"
+import { useInventario } from "../../../data/CopiaInventario"
+import { hayStockSuficiente } from "../../../Service/Funciones"
+
 function ItemSolo() {
-  const { codigo } = useParams()
+  const params = useParams()
   const navigate = useNavigate()
   const [cantidad, setCantidad] = useState("")
-  const [MetodoEnvio,setMetodoEnvio] = useState("")
-  const producto = productos.find(
-    (item) => String(item["Código"]) === String(codigo)
+  const [metodoEnvio,setmetodoEnvio] = useState("")
+  const inventario = useInventario()
+   const [mensaje, setMensaje] = useState("")
+  const producto = inventario.productos.find(
+    (item) => String(item["Código"]) === String(params.codigo)
   )
 
   if (!producto) {
@@ -27,7 +31,23 @@ function ItemSolo() {
     )
   }
 
-  const manejarCambio = (e) => setCantidad(e.target.value)
+  const manejarCambio = (e) => {setCantidad(e.target.value)
+  setMensaje("")}
+  const manejarCompra = () => {
+  const cantidadNumero = Number(cantidad)
+
+    if (metodoEnvio === "") {
+      setMensaje("Seleccione un método de envío")
+      return
+    }
+    if (!hayStockSuficiente(producto, cantidadNumero)) {
+      setMensaje("Cantidad no válida o sin stock suficiente")
+      return
+    } 
+    inventario.comprar(producto["Código"], cantidadNumero)
+    setCantidad("")
+    setMensaje("Producto agregado correctamente")
+  }
 
   return (
     <section className="detalle-producto">
@@ -51,8 +71,8 @@ function ItemSolo() {
         etiqueta = "Seleccione metodo de envio"
         id="metodo-envio"
         label="Método de envío"
-        value={MetodoEnvio}
-        onChange={(e) => setMetodoEnvio(e.target.value)}/>
+        value={metodoEnvio}
+        onChange={(e) => setmetodoEnvio(e.target.value)}/>
       <section className="acciones-compra">
         <Input
           id="cantidad-producto"
@@ -62,13 +82,13 @@ function ItemSolo() {
           placeholder="Ingresar la cantidad deseada"
         />
         <ButtonIndexForm
-          onClick={() => console.log("Añadido al carrito:", producto, cantidad)}
+          onClick={manejarCompra}
           estaCorrecto={true}
         >
           Agregar al Carrito
         </ButtonIndexForm>
       </section>
-
+    {mensaje !== "" && <p className="detalle-producto__mensaje">{mensaje}</p>}
     </section>
   )
 }

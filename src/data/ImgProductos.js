@@ -10,7 +10,7 @@ Object.keys(fotos).forEach((ruta) => {
   urlPorArchivo[archivo] = fotos[ruta]
 })
  
-// Código del producto -> nombre del archivo de su foto
+
 const archivoPorCodigo = {
   // Mat. Construcción
   MC001: "Polpaico.webp",

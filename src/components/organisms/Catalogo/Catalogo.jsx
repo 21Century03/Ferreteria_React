@@ -1,14 +1,15 @@
 import Forma from "../../molecules/ItemForma/itemForma"
-import { productos } from "../../../data/productos"
 import { ImgProductos } from "../../../data/ImgProductos"
 import "./Catalogo.css"
+import { useInventario } from "../../../data/CopiaInventario"
 
 function Catalogo() {
+  const inventario = useInventario()
   return (
     <section className="catalogo">
       <h2>Catálogo de productos</h2>
       <section className="tarjeta-producto">
-        {productos.map(function (producto) {
+        {inventario.productos.map(function (producto) {
           return (
             <section key={producto["Código"]}>
               <Forma
