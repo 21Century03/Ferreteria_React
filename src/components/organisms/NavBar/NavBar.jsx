@@ -28,8 +28,6 @@ function Navbar() {
         <NavLink to="/" end onClick={cerrar}>Inicio</NavLink>
         <NavLink to="/catalogo" onClick={cerrar}>Catálogo</NavLink>
         <NavLink to="/login" onClick={cerrar}>Login</NavLink>
-        
-        <NavLink to="/administrador" onClick={cerrar}>Administrar</NavLink>
       </nav>
     </header>
   );

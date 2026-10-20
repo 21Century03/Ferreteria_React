@@ -3,7 +3,7 @@
 Definicion de Const y Booleans
  */
 const numTelefono = /^[0-9]+$/;
-const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const patronCorreo = /^[^\s@]+@(gmail\.com|gmail\.cl|maestros\.cl)$/i;
     
     
     export const ValidarNombre = (nonmbre) => {
@@ -40,7 +40,7 @@ const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     }
 
     export const ValidarCorreo = (correo) => {
-        if (!patronCorreo.test(correo)) {
+        if (!patronCorreo.test(correo.trim())) {
             return {
                 valido: false,
                 mensaje: "El correo electrónico no es válido",

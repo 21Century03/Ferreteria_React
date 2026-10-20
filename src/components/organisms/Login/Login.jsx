@@ -4,6 +4,7 @@ import InputMoIndex from "../../molecules/InputMoIndex/InputMoIndex"
 import Button from "../../atoms/Button/Button"
 import { ValidarNombre, ValidarTelefono, ValidarCorreo } from "../../../Service/ValidacionesFormLogin/Validaciones";
 import "../../../Service/ValidacionesFormLogin/CamposError.css";
+import { useNavigate } from "react-router-dom";
 
    /* Definicion de Const y Booleans */
 
@@ -12,12 +13,18 @@ const FormularioIndex = () => {
     const [nombre, setNombre] = useState(""); /* Se le asigna un estado al nombre*/
     const [telefono, setTelefono] = useState(""); /* Se le asigna un estado al telefono*/
     const [correo, setCorreo] = useState(""); /* Se le asigna un estado al correo*/
+
+
     
     /* Seteos de las clases (cambian el estilo del campo de cada input) */ 
     const [ClaseNombre, setClaseNombre] = useState("");
     const [ClaseTelefono, setClaseTelefono] = useState("");
     const [ClaseCorreo, setClaseCorreo] = useState("");
 
+    const [MensajeNombre, setMensajeNombre] = useState("");
+    const [MensajeTelefono, setMensajeTelefono] = useState("");
+    const [MensajeCorreo, setMensajeCorreo] = useState("");
+    const navigate = useNavigate();
 
     
 
@@ -33,12 +40,26 @@ const FormularioIndex = () => {
         setClaseCorreo(resCorreo.className);
         setClaseTelefono(resTelefono.className);
 
-        setEsCorrecto(resNombre.valido && resTelefono.valido && resCorreo.valido);
+        setMensajeNombre(resNombre.mensaje);
+        setMensajeTelefono(resTelefono.mensaje);
+        setMensajeCorreo(resCorreo.mensaje);
 
+        const valido = resNombre.valido && resTelefono.valido && resCorreo.valido;
+        setEsCorrecto(valido);
+                
+        if (valido) {
+            const correoLimpio = correo.trim().toLowerCase();
 
-
+            if (correoLimpio.endsWith("@maestros.cl")) {
+                navigate("/administrador");
+            } else if (correoLimpio.endsWith("@gmail.cl") || correoLimpio.endsWith("@gmail.com")){
+                navigate("/");
+            }
+        }
     
-}
+}  
+
+
 
    
     
@@ -57,6 +78,7 @@ const FormularioIndex = () => {
                 placeholder="Escribe tu Nombre"
                 className={ClaseNombre}
             />
+            {MensajeNombre && <p className="MensajeError">{MensajeNombre}</p>}
             
             <InputMoIndex
                 id="telefono"
@@ -69,6 +91,7 @@ const FormularioIndex = () => {
                 placeholder="Escribe tu Teléfono"
                 className={ClaseTelefono}
             />
+            {MensajeTelefono && <p className="MensajeError">{MensajeTelefono}</p>}
             
             <InputMoIndex
                 id="correo"
@@ -78,6 +101,7 @@ const FormularioIndex = () => {
                 placeholder="Escribe tu Correo"
                 className={ClaseCorreo}
             />
+            {MensajeCorreo && <span className="MensajeError">{MensajeCorreo}</span>}
     
             
 
