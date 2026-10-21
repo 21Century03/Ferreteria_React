@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ImgProductos } from "../../../data/ImgProductos"
 import Input from "../../atoms/Input/Input"
 import ButtonIndexForm from "../../atoms/Button/Button"
@@ -8,6 +8,8 @@ import SelectorDesp from "../../molecules/SelectorDesp/SelectorDesp"
 import Item from "../../molecules/ItemForma/itemForma"
 import { useInventario } from "../../../data/CopiaInventario"
 import { validarCompra } from "../../../Service/Funciones"
+import { useUsuario } from "../../../data/UsuarioContext"
+
 function ItemSolo() {
   const params = useParams()
   const navigate = useNavigate()
@@ -15,10 +17,17 @@ function ItemSolo() {
   const [metodoEnvio,setmetodoEnvio] = useState("")
   const inventario = useInventario()
    const [mensaje, setMensaje] = useState("")
+  const sesion = useUsuario()
 
   const producto = inventario.productos.find(
     (item) => String(item["Código"]) === String(params.codigo)
   )
+
+  useEffect(() => {
+    if (producto) {
+      sesion.registrarVisto(params.codigo)
+    }
+  }, [params.codigo, sesion.usuario])
 
   if (!producto) {
     return (
@@ -83,6 +92,8 @@ function ItemSolo() {
         <Input
           id="cantidad-producto"
           type="number"
+          min="1"
+          step="1"
           value={cantidad}
           onChange={manejarCambio}
           placeholder="Ingresar la cantidad deseada"

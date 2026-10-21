@@ -1,0 +1,28 @@
+.panel-usuario {
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.panel-usuario h1 {
+  color: var(--marca);
+  margin-bottom: 16px;
+}
+
+.panel-usuario__menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.panel-usuario__contenido {
+  padding: 24px;
+  background: var(--fondo-panel);
+  border-radius: 10px;
+}
+
+.panel-usuario__contenido h2 {
+  color: var(--marca);
+  margin-bottom: 16px;
+}
+

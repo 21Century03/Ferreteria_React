@@ -16,13 +16,26 @@ function cargarInicial() {
   }
 }
 
+function cargarCarrito() {
+  try {
+    const guardado = localStorage.getItem("carrito")
+    if (guardado) {
+      return JSON.parse(guardado)
+    }
+    return []
+  } catch (error) {
+    return []
+  }
+}
+
 export function InventarioProvider(props) {
   const [productos, setProductos] = useState(cargarInicial)
-  const [carrito, setCarrito] = useState([])
+  const [carrito, setCarrito] = useState(cargarCarrito)
 
   useEffect(() => {
     localStorage.setItem("inventario", JSON.stringify(productos))
-  }, [productos])
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }, [productos, carrito])
 
   const comprar = (codigo, cantidad) => {
     setProductos((actual) => comprarProducto(actual, codigo, cantidad))

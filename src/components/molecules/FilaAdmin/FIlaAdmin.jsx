@@ -15,7 +15,7 @@ function FilaAdmin(props) {
       return
     }
     setMensaje("")
-    props.onGuardar(props.codigo, stockNumero)
+    props.onGuardar(props.codigo, Number(stock))
   }
 
   return (

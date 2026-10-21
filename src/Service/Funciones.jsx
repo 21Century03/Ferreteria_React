@@ -13,7 +13,7 @@ export function comprarProducto(productos, codigo, cantidad) {
 }
 
 export function hayStockSuficiente(producto, cantidad) {
-  return cantidad > 0 && cantidad <= producto["Stock"]
+  return Number.isInteger(cantidad) && cantidad > 0 && cantidad <= producto["Stock"]
 }
 
 export function estaBajoStock(producto) {

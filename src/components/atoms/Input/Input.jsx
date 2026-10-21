@@ -8,6 +8,8 @@ function InputIndexNombre(props) {
       value={props.value}
       onChange={props.onChange}
       placeholder={props.placeholder}
+      min={props.min}
+      step={props.step}
       className={"input " + (props.className || "")}
     />
   );

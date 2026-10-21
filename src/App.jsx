@@ -10,11 +10,14 @@ import ManejoStockPage from "./pages/ManejoStockPage"
 import InventarioBajoPage from "./pages/InventarioBajoPage"
 import AdministradorPage from "./pages/AdministradorPage"
 import CarritoPage from "./pages/carritoPage"
+import UsuarioPage from "./pages/UsuarioPage"
+import { UsuarioProvider } from "./data/UsuarioContext"
 
 function App() {
   return (
     <section>
       <BrowserRouter>
+      <UsuarioProvider>
       <InventarioProvider>
       <Routes>
       
@@ -26,9 +29,11 @@ function App() {
         <Route path="/admin2" element={<InventarioBajoPage />} />
         <Route path="/administrador" element={<AdministradorPage/>} />
         <Route path="/Carrito" element={<CarritoPage/>} />
+        <Route path="/usuario" element={<UsuarioPage/>} />
 
       </Routes>
       </InventarioProvider>
+      </UsuarioProvider>
     </BrowserRouter>
     </section>
   )

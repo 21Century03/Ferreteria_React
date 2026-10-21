@@ -2,10 +2,11 @@
 import { useState } from "react"
 import InputMoIndex from "../../molecules/InputMoIndex/InputMoIndex"
 import Button from "../../atoms/Button/Button"
-import { ValidarNombre, ValidarTelefono, ValidarCorreo } from "../../../Service/ValidacionesFormLogin/Validaciones";
+import { ValidarNombre, ValidarTelefono, ValidarCorreo, ValidarContrasenia } from "../../../Service/ValidacionesFormLogin/Validaciones";
 import "../../../Service/ValidacionesFormLogin/CamposError.css";
 import { useNavigate } from "react-router-dom";
-
+import "./Login.css";
+import { useUsuario } from "../../../data/UsuarioContext";
    /* Definicion de Const y Booleans */
 
 const FormularioIndex = () => {
@@ -13,19 +14,21 @@ const FormularioIndex = () => {
     const [nombre, setNombre] = useState(""); /* Se le asigna un estado al nombre*/
     const [telefono, setTelefono] = useState(""); /* Se le asigna un estado al telefono*/
     const [correo, setCorreo] = useState(""); /* Se le asigna un estado al correo*/
-
+    const [contrasenia, setContrasenia] = useState("");
 
     
     /* Seteos de las clases (cambian el estilo del campo de cada input) */ 
     const [ClaseNombre, setClaseNombre] = useState("");
     const [ClaseTelefono, setClaseTelefono] = useState("");
     const [ClaseCorreo, setClaseCorreo] = useState("");
+    const [ClaseContrasenia, setClaseContrasenia] = useState("");
 
     const [MensajeNombre, setMensajeNombre] = useState("");
     const [MensajeTelefono, setMensajeTelefono] = useState("");
     const [MensajeCorreo, setMensajeCorreo] = useState("");
+    const [MensajeContrasenia, setMensajeContrasenia] = useState("");
     const navigate = useNavigate();
-
+    const sesion = useUsuario();
     
 
     const [EsCorrecto, setEsCorrecto] = useState(false); /* Se le asigna un cambiador Estado al Button*/
@@ -34,15 +37,18 @@ const FormularioIndex = () => {
         const resNombre = ValidarNombre(nombre);
         const resTelefono = ValidarTelefono(telefono);
         const resCorreo = ValidarCorreo(correo);
+        const resContrasenia = ValidarContrasenia(contrasenia);
 
         
         setClaseNombre(resNombre.className);
         setClaseCorreo(resCorreo.className);
         setClaseTelefono(resTelefono.className);
+        setClaseContrasenia(resContrasenia.className);
 
         setMensajeNombre(resNombre.mensaje);
         setMensajeTelefono(resTelefono.mensaje);
         setMensajeCorreo(resCorreo.mensaje);
+        setMensajeContrasenia(resContrasenia.mensaje);
 
         const valido = resNombre.valido && resTelefono.valido && resCorreo.valido;
         setEsCorrecto(valido);
@@ -53,7 +59,8 @@ const FormularioIndex = () => {
             if (correoLimpio.endsWith("@maestros.cl")) {
                 navigate("/administrador");
             } else if (correoLimpio.endsWith("@gmail.cl") || correoLimpio.endsWith("@gmail.com")){
-                navigate("/");
+                sesion.iniciarSesion({ nombre: nombre.trim(), telefono: telefono, correo: correoLimpio });
+                navigate("/usuario");
             }
         }
     
@@ -102,7 +109,17 @@ const FormularioIndex = () => {
                 className={ClaseCorreo}
             />
             {MensajeCorreo && <span className="MensajeError">{MensajeCorreo}</span>}
-    
+
+            <InputMoIndex
+                id="contrasenia"
+                label="Contraseña"
+                type="password"
+                value={contrasenia}
+                onChange={(e) => setContrasenia(e.target.value)}
+                placeholder="Escribe tu Contraseña"
+                className={ClaseContrasenia}
+            />
+            {MensajeContrasenia && <p className="MensajeError">{MensajeContrasenia}</p>}
             
 
             <Button

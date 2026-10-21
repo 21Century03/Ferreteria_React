@@ -26,3 +26,36 @@
 .incorrecto:hover {
   background: #565e64;
 }
+
+/* Botones pequeños del carrito */
+.btn-cantidad,
+.btn-eliminar {
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-cantidad {
+  min-width: 38px;
+  padding: 4px 12px;
+  font-size: 1.1rem;
+  background: #333;
+  color: #fff;
+}
+
+.btn-cantidad:hover {
+  background: var(--marca);
+  color: #000;
+}
+
+.btn-eliminar {
+  padding: 6px 16px;
+  background: #dc3545;
+  color: #fff;
+}
+
+.btn-eliminar:hover {
+  background: var(--marca-hover);
+}

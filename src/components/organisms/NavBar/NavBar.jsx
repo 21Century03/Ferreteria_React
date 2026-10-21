@@ -29,6 +29,7 @@ function Navbar() {
         <NavLink to="/catalogo" onClick={cerrar}>Catálogo</NavLink>
         <NavLink to="/login" onClick={cerrar}>Login</NavLink>
         <NavLink to="/Carrito" onClick={cerrar}>Carrito</NavLink>
+        <NavLink to="/usuario" onClick={cerrar}>Mi cuenta</NavLink>
       </nav>
     </header>
   );

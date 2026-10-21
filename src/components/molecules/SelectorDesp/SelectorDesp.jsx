@@ -13,7 +13,7 @@ function SelectorDesp (props
     value={props.value}
     onChange={props.onChange}
     className={props.className}>
-
+        <option value="">Seleccione una opción</option>
         <option value="despacho">Despacho a domicilio</option>
         <option value="retiro">Retiro en tienda</option>
     </Selector>

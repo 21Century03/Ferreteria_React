@@ -1,0 +1,24 @@
+.carrito h2 {
+  margin-bottom: 20px;
+}
+
+.carrito__resumen {
+  margin-top: 20px;
+  padding: 20px;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.carrito__resumen p {
+  margin-bottom: 6px;
+}
+
+.carrito__resumen h3 {
+  margin: 12px 0 16px;
+  color: var(--marca);
+}
+
+.carrito__mensaje {
+  color: #ffc107;
+}

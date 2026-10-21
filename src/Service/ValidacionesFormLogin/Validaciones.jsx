@@ -55,7 +55,27 @@ const patronCorreo = /^[^\s@]+@(gmail\.com|gmail\.cl|maestros\.cl)$/i;
         }
     }
             
-        
+     export const ValidarContrasenia = (contrasenia) => {
+        if (contrasenia.trim() === "") {
+            return {
+                valido: false,
+                mensaje: "La contraseña no puede estar vacía",
+                className: "CampoError"
+            };
+        } else if (contrasenia.length < 6) {
+            return {
+                valido: false,
+                mensaje: "La contraseña debe tener al menos 6 caracteres",
+                className: "CampoError"
+            };
+        } else {
+            return {
+                valido: true,
+                mensaje: "",
+                className: "CampoCorrecto"
+            };
+        }
+    }   
 
 
 
