@@ -1,8 +1,30 @@
+.item-visto {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .item-visto__img {
+  display: block;
+  width: 100%;
   height: 150px;
   object-fit: cover;
 }
 
-.item-visto p {
+.item-visto__cuerpo {
+  padding: 16px;
+}
+
+.item-visto__cuerpo p {
   margin-bottom: 8px;
+}
+
+.item-visto__nombre {
+  font-weight: bold;
 }

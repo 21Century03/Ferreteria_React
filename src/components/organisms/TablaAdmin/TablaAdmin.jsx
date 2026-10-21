@@ -1,4 +1,5 @@
 import FilaAdmin from "../../molecules/FilaAdmin/FIlaAdmin"
+import "./TablaAdmin.css"
 
 function TablaAdmin(props) {
   return (

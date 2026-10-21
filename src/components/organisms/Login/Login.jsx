@@ -74,7 +74,7 @@ const FormularioIndex = () => {
 /* Props*/
 
     return (
-        <div>
+        <div className="formulario-login">
         
            <InputMoIndex
                 id="nombre"
@@ -123,17 +123,16 @@ const FormularioIndex = () => {
             {MensajeContrasenia && <p className="MensajeError">{MensajeContrasenia}</p>}
             
 
-            <Button
-                onClick={validarFormulario}
-                EsCorrecto ={EsCorrecto} /* Se aclara k el Prop es un codigo JS */
-
-                /* Se le da  children de Button el prop "validar"*/
-            >
-                Login 
-            </Button>
-            <nav>
-                <NavLink to = "/CrearUsuario">Crear Usuario</NavLink>
-            </nav>
+            <section className="formulario-login__acciones">
+                <Button
+                    onClick={validarFormulario}
+                    className="btn-login"
+                    EsCorrecto ={EsCorrecto}
+                >
+                    Login 
+                </Button>
+                <NavLink to = "/CrearUsuario" className="btn-crear-usuario">Crear Usuario</NavLink>
+            </section>
      
         </div>
     )

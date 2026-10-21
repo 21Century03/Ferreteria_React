@@ -1,0 +1,43 @@
+.tabla-admin {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  background: var(--fondo-panel);
+}
+
+.tabla-admin th {
+  padding: 12px;
+  background: #000;
+  color: var(--marca);
+  text-align: left;
+}
+
+.tabla-admin td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #3a3f45;
+}
+
+.tabla-admin tr:hover td {
+  background: #2e3237;
+}
+
+.tabla-admin input {
+  max-width: 120px;
+}
+
+.tabla-admin button {
+  padding: 8px 18px;
+}
+
+.tabla-admin td p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .tabla-admin {
+    display: block;
+    overflow-x: auto;
+  }
+}

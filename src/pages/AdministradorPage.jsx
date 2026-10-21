@@ -7,21 +7,26 @@ import "./AdministradorPAge.css"
 function AdministradorPage (){
     return (
         <Plantilla>
-            <ImagenAdmin Etiqueta = "Administras Stock" 
-            imagen = {logo}
-            nombre = "Administrar stock "
-            className = "logo"/>
-            
-            <nav> <Link to="/admin" >Administrar STOCK</Link></nav>
-           
+            <section className="admin">
+                <h1>Panel de Administración</h1>
+                <section className="admin__opciones">
+                    <section className="admin__tarjeta">
+                        <ImagenAdmin Etiqueta = "Administras Stock" 
+                        imagen = {logo}
+                        nombre = "Administrar stock "
+                        className = "logo"/>
+                        <nav> <Link to="/admin" className="admin__enlace" >Administrar STOCK</Link></nav>
+                    </section>
 
-            <ImagenAdmin Etiqueta = "Revisar Stock Bajo"
-            imagen = {logo2}
-            nombre = "stock bajo "
-            className = "logo"/>
-            
-            <nav><Link to="/admin2">Revisar Stock</Link></nav>
-
+                    <section className="admin__tarjeta">
+                        <ImagenAdmin Etiqueta = "Revisar Stock Bajo"
+                        imagen = {logo2}
+                        nombre = "stock bajo "
+                        className = "logo"/>
+                        <nav><Link to="/admin2" className="admin__enlace">Revisar Stock</Link></nav>
+                    </section>
+                </section>
+            </section>
         </Plantilla>
     )
 }

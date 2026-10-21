@@ -3,7 +3,7 @@ import "./DatoPerfil.css"
 
 function DatoPerfil(props) {
   return (
-    <li className="list-group-item dato-perfil">
+    <li className="dato-perfil">
       <strong>{props.titulo}</strong>
       <Etiqueta texto={props.valor} />
     </li>

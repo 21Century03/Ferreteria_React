@@ -1,4 +1,39 @@
-.formulario-login > button {
-  display: block;
+.formulario-login__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
   margin-top: 16px;
+}
+
+.btn-login,
+.btn-crear-usuario {
+  display: inline-block;
+  padding: 8px 22px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-login {
+  background: var(--marca);
+  color: #fff;
+}
+
+.btn-login:hover {
+  background: var(--marca-hover);
+}
+
+.btn-crear-usuario {
+  background: #333;
+  color: #fff;
+}
+
+.btn-crear-usuario:hover {
+  background: var(--marca);
+  color: #000;
 }

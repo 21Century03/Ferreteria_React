@@ -1,4 +1,5 @@
 import FilaCompra from "../../molecules/FilaCompra/FilaCompra"
+import "./MisCompras.css"
 
 function MisCompras(props) {
   if (props.compras.length === 0) {
@@ -13,7 +14,7 @@ function MisCompras(props) {
   return (
     <section>
       <h2>Mis compras</h2>
-      <ul className="list-group">
+      <ul className="mis-compras__lista">
         {props.compras.map((compra) => (
           <FilaCompra
             key={compra.id}
