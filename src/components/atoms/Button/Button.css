@@ -1,5 +1,5 @@
 .correcto,
-.incorrecto {
+.incorrecto{
   border: none;
   padding: 12px 28px;
   border-radius: 6px;
@@ -9,7 +9,7 @@
   transition: 0.3s ease;
 }
  
-.correcto {
+.correcto  {
   background: var(--marca);
   color: #fff;
 }

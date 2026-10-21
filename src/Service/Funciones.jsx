@@ -17,7 +17,7 @@ export function hayStockSuficiente(producto, cantidad) {
 }
 
 export function estaBajoStock(producto) {
-  return producto["Stock"] <= producto["Stock mínimo"]
+  return Number(producto["Stock"]) <= Number(producto["Stock mínimo"])
 }
 
 export function obtenerBajoStock(productos) {

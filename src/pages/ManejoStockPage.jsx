@@ -2,6 +2,8 @@ import TablaAdmin from "../components/organisms/TablaAdmin/TablaAdmin"
 import ButtonIndexForm from "../components/atoms/Button/Button"
 import { useInventario } from "../data/CopiaInventario"
 import Plantilla from "../components/templates/PlantillaPublica"
+import { NavLink } from "react-router-dom";
+import "./ManejoStockPage.css"
 function AdminPage() {
   const inventario = useInventario()
 
@@ -22,6 +24,9 @@ function AdminPage() {
       <ButtonIndexForm onClick={manejarReinicio} estaCorrecto={false}>
         Restablecer stock original
       </ButtonIndexForm>
+              <nav>
+          <NavLink to = "/admin2" className = "botonAdminStock"> Ir a revisar Stock  </NavLink>
+        </nav>
     </main>
     </Plantilla>
   )

@@ -12,6 +12,7 @@ import AdministradorPage from "./pages/AdministradorPage"
 import CarritoPage from "./pages/carritoPage"
 import UsuarioPage from "./pages/UsuarioPage"
 import { UsuarioProvider } from "./data/UsuarioContext"
+import CrearUsuarioPage from "./pages/CrearUsuarioPage"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/administrador" element={<AdministradorPage/>} />
         <Route path="/Carrito" element={<CarritoPage/>} />
         <Route path="/usuario" element={<UsuarioPage/>} />
+        <Route path="/CrearUsuario" element={<CrearUsuarioPage/>} />
 
       </Routes>
       </InventarioProvider>

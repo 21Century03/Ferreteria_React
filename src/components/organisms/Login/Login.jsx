@@ -7,6 +7,7 @@ import "../../../Service/ValidacionesFormLogin/CamposError.css";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useUsuario } from "../../../data/UsuarioContext";
+import { NavLink } from "react-router-dom";
    /* Definicion de Const y Booleans */
 
 const FormularioIndex = () => {
@@ -50,7 +51,7 @@ const FormularioIndex = () => {
         setMensajeCorreo(resCorreo.mensaje);
         setMensajeContrasenia(resContrasenia.mensaje);
 
-        const valido = resNombre.valido && resTelefono.valido && resCorreo.valido;
+        const valido = resNombre.valido && resTelefono.valido && resCorreo.valido && resContrasenia.valido;
         setEsCorrecto(valido);
                 
         if (valido) {
@@ -60,7 +61,7 @@ const FormularioIndex = () => {
                 navigate("/administrador");
             } else if (correoLimpio.endsWith("@gmail.cl") || correoLimpio.endsWith("@gmail.com")){
                 sesion.iniciarSesion({ nombre: nombre.trim(), telefono: telefono, correo: correoLimpio });
-                navigate("/usuario");
+                navigate("/");
             }
         }
     
@@ -130,6 +131,9 @@ const FormularioIndex = () => {
             >
                 Login 
             </Button>
+            <nav>
+                <NavLink to = "/CrearUsuario">Crear Usuario</NavLink>
+            </nav>
      
         </div>
     )

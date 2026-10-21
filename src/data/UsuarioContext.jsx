@@ -56,6 +56,23 @@ export function UsuarioProvider(props) {
       ...actual,
     ])
   }
+  // cosas para el crear usuarios
+
+const [usuarios, setUsuarios] = useState(() => cargarGuardado("usuarios", []))
+
+useEffect(() => {
+  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+}, [usuarios])
+
+const registrarUsuario = (datos) => {
+  const correo = datos.correo.trim().toLowerCase()
+  const existe = usuarios.some((u) => u.correo === correo)
+  if (existe) {
+    return { ok: false, mensaje: "Ese correo ya está registrado" }
+  }
+  setUsuarios((actual) => [...actual, { ...datos, correo: correo }])
+  return { ok: true, mensaje: "" }
+}
 
   const valor = {
     usuario: usuario,
@@ -65,6 +82,9 @@ export function UsuarioProvider(props) {
     cerrarSesion: cerrarSesion,
     registrarVisto: registrarVisto,
     registrarCompra: registrarCompra,
+    usuario: usuario,
+    usuarios: usuarios,
+    registrarUsuario: registrarUsuario
   }
 
   return (
@@ -77,3 +97,4 @@ export function UsuarioProvider(props) {
 export function useUsuario() {
   return useContext(UsuarioContext)
 }
+

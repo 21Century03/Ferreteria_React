@@ -2,6 +2,7 @@ import { useInventario } from "./../data/CopiaInventario"
 import { obtenerBajoStock } from "../Service/Funciones"
 import Plantilla from "../components/templates/PlantillaPublica"
 import { NavLink } from "react-router-dom";
+import "./ManejoStockPage.css"
 
 function StockBajoPage() {
   const inventario = useInventario()
@@ -15,7 +16,7 @@ function StockBajoPage() {
       {lista.length === 0 ? (
         <p>Todo en orden.</p>
       ) : (
-        <ul>
+        <ul className = "listaItems">
           {lista.map((producto) => (
             <li key={producto["Código"]}>
               {producto["Nombre del producto"]}: quedan {producto["Stock"]} (mínimo {producto["Stock mínimo"]})
@@ -25,7 +26,7 @@ function StockBajoPage() {
 
       )}
         <nav>
-          <NavLink to = "/admin"> resstablecer  </NavLink>
+          <NavLink to = "/admin" className = "botonBajo"> restablecer  </NavLink>
         </nav>
 
     </main></Plantilla>
