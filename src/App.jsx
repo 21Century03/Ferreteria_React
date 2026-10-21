@@ -9,6 +9,7 @@ import { InventarioProvider } from "./data/CopiaInventario"
 import ManejoStockPage from "./pages/ManejoStockPage"
 import InventarioBajoPage from "./pages/InventarioBajoPage"
 import AdministradorPage from "./pages/AdministradorPage"
+import CarritoPage from "./pages/carritoPage"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/admin" element={<ManejoStockPage />} />
         <Route path="/admin2" element={<InventarioBajoPage />} />
         <Route path="/administrador" element={<AdministradorPage/>} />
+        <Route path="/Carrito" element={<CarritoPage/>} />
 
       </Routes>
       </InventarioProvider>

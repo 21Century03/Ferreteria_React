@@ -41,9 +41,15 @@ function ItemSolo() {
     setMensaje(error)
     return
   }
-  inventario.comprar(producto["Código"], cantidadNumero)
+  const resultado = inventario.agregarProducto(producto["Código"], cantidadNumero, metodoEnvio)
+
+  if (!resultado.ok) {
+    setMensaje(resultado.mensaje)
+    return
+  }
+
   setCantidad("")
-  setMensaje("Producto agregado correctamente")
+  setMensaje("Producto agregado al carrito")
 }
 
 
@@ -89,6 +95,10 @@ function ItemSolo() {
         </ButtonIndexForm>
       </section>
     {mensaje !== "" && <p className="detalle-producto__mensaje">{mensaje}</p>}
+
+    <ButtonIndexForm onClick={() => navigate("/carrito")} estaCorrecto={true}>
+  Ver carrito
+    </ButtonIndexForm>
     </section>
   )
 }

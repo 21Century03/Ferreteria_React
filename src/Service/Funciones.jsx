@@ -58,3 +58,18 @@ export function validarCompra(producto, cantidad, metodoEnvio) {
   }
   return ""
 }
+
+const iva = 0.19;
+
+export function total(Subtotal){
+    return {
+        total: Subtotal + (Subtotal * iva)
+    }
+
+}
+
+export const costo_envio = 3990
+
+export function calcularCostoEnvio(carrito) {
+  const hayDomicilio = carrito.some((item) => item.envio === "despacho")
+  return hayDomicilio ? costo_envio : 0 }
