@@ -1,15 +1,19 @@
 import Forma from "../../molecules/ItemForma/itemForma"
 import { ImgProductos } from "../../../data/ImgProductos"
 import "./Catalogo.css"
-import { useInventario } from "../../../data/CopiaInventario"
 
-function Catalogo() {
-  const inventario = useInventario()
+function Catalogo(props) {
+  let mensajeVacio = null
+  if (props.productos.length === 0) {
+    mensajeVacio = <p>No hay productos con esos filtros.</p>
+  }
+
   return (
     <section className="catalogo">
       <h2>Catálogo de productos</h2>
+      {mensajeVacio}
       <section className="tarjeta-producto">
-        {inventario.productos.map(function (producto) {
+        {props.productos.map(function (producto) {
           return (
             <section key={producto["Código"]}>
               <Forma
