@@ -1,5 +1,5 @@
-import Cabezera from "../organisms/NavBar/NavBar"
-import Footer from "../organisms/Footer/Footer";
+import Cabezera from "../organisms/NavBar"
+import Footer from "../organisms/Footer";
 
 function CatalogoTemplate ({children}){
     return ( <>

@@ -1,6 +1,6 @@
-import Login from "../organisms/Login/Login";
-import './PlantillaPublica.css';
-import Footer from "../organisms/Footer/Footer"
+import Login from "../organisms/Login";
+import '../../Styles/PlantillaPublica.css';
+import Footer from "../organisms/Footer"
 
 
 

@@ -1,0 +1,9 @@
+.tabla-admin thead th {
+  color: var(--marca);
+  border-bottom: 2px solid var(--marca);
+  white-space: nowrap;
+}
+
+.tabla-admin .form-control {
+  max-width: 140px;
+}

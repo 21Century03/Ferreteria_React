@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { agregarVisto, crearCompra } from "../Service/FuncionesUsuario"
 
+
 const UsuarioContext = createContext(null)
 
 function cargarGuardado(clave, valorInicial) {

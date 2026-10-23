@@ -1,5 +1,6 @@
 import Plantilla from "../components/templates/PlantillaPublica"
-import CarritoPanel from "../components/organisms/CarritoPanel/CarritoPanel"
+import CarritoPanel from "../components/organisms/CarritoPanel"
+
 
 function CarritoPage (){
     return (

@@ -1,5 +1,6 @@
 import Plantilla from "../components/templates/PlantillaPublica"
-import PanelUsuario from "../components/organisms/PanelUsuario/PanelUsuario"
+import PanelUsuario from "../components/organisms/PanelUsuario"
+
 
 function UsuarioPage() {
   return (

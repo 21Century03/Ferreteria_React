@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CatalogoTemplate from "../components/templates/CatalogoTemplate";
-import Catalogo from "../components/organisms/Catalogo/Catalogo";
-import MenuFiltros from "../components/organisms/MenuFiltros/MenuFiltros";
+import Catalogo from "../components/organisms/Catalogo";
+import MenuFiltros from "../components/organisms/MenuFiltros";
 import { useInventario } from "../data/CopiaInventario";
 
 function CatalogoPag() {

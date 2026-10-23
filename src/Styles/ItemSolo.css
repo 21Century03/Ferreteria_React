@@ -1,0 +1,28 @@
+.detalle-producto {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.acciones-compra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.acciones-compra input {
+  flex: 1 1 200px;
+}
+
+.detalle-producto__img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: 280px;
+  object-fit: cover;
+  margin: 16px auto 0;
+}
+
+.detalle-producto > button {
+  margin-top: 12px;
+}

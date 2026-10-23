@@ -1,5 +1,5 @@
 import Planilla from "../components/templates/CatalogoTemplate"
-import Producto from "../components/organisms/ItemSolo/ItemSolo"
+import Producto from "../components/organisms/ItemSolo"
 
 function ProductoDetallePag (){
         return (

@@ -1,0 +1,104 @@
+:root {
+  --marca: #f77f00;          
+  --marca-hover: #d62828;
+  --fondo: #1b1d20;
+  --fondo-panel: #25282c;
+  --texto: #e9ecef;
+}
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+ 
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+ 
+
+
+
+/* ============================================================
+   Variantes de Bootstrap con los colores de la marca.
+   Estas clases se usaban en el JSX pero no estaban definidas.
+   Usan las variables --bs-btn-* de Bootstrap 5.3, así que
+   funcionan con .btn, <Link>, <NavLink> y <button>.
+   ============================================================ */
+
+/* Naranjo sólido (igual que "Ver catálogo" del inicio) */
+.btn-marca {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--marca);
+  --bs-btn-border-color: var(--marca);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--marca-hover);
+  --bs-btn-hover-border-color: var(--marca-hover);
+  --bs-btn-focus-shadow-rgb: 247, 127, 0;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--marca-hover);
+  --bs-btn-active-border-color: var(--marca-hover);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--marca);
+  --bs-btn-disabled-border-color: var(--marca);
+}
+
+/* Naranjo con borde (botones secundarios / pestañas inactivas) */
+.btn-outline-marca {
+  --bs-btn-color: var(--marca);
+  --bs-btn-border-color: var(--marca);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--marca);
+  --bs-btn-hover-border-color: var(--marca);
+  --bs-btn-focus-shadow-rgb: 247, 127, 0;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--marca);
+  --bs-btn-active-border-color: var(--marca);
+  --bs-btn-disabled-color: var(--marca);
+  --bs-btn-disabled-border-color: var(--marca);
+}
+
+/* Oscuro con acento naranjo (barra de navegación y botones +/- del carrito) */
+.btn-oscuro {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #000;
+  --bs-btn-border-color: #3a3d42;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--marca);
+  --bs-btn-hover-border-color: var(--marca);
+  --bs-btn-focus-shadow-rgb: 247, 127, 0;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--marca);
+  --bs-btn-active-border-color: var(--marca);
+}
+
+/* Acciones de riesgo (cerrar sesión) */
+.incorrecto {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--marca-hover);
+  --bs-btn-border-color: var(--marca-hover);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #a61e1e;
+  --bs-btn-hover-border-color: #a61e1e;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #a61e1e;
+  --bs-btn-active-border-color: #a61e1e;
+}
+
+/* Textos y paneles de marca */
+.text-marca {
+  color: var(--marca) !important;
+}
+
+.panel-marca {
+  background-color: var(--fondo-panel);
+  color: var(--texto);
+  border: 1px solid rgba(247, 127, 0, 0.35);
+}

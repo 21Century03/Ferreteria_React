@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PlantillaPublica from "../components/templates/PlantillaPublica";
 import { productos } from "../data/productos";
 import imgCategoria from "../data/imgCategoria";
-import './InicioPage.css';
+import '../Styles/InicioPage.css';
 
 const categorias = [...new Set(productos.map((p) => p["Categoría"]))];
 

@@ -1,5 +1,3 @@
-import CatalogoTemplate from "./components/templates/CatalogoTemplate"
-
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Catalogo from "./pages/CatalagoPag"
 import Inicio from "./pages/InicioPage"
