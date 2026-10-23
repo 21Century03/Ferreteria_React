@@ -4,11 +4,11 @@
   gap: 20px;
   padding: 20px 0;
 }
- 
+
 .tarjeta-producto > section {
   display: flex;
 }
- 
+
 .tarjeta-producto > section > .etiqueta {
   flex: 1;
 }

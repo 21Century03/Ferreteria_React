@@ -1,0 +1,27 @@
+.filtro-precios {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 220px));
+  justify-content: center;
+  gap: 12px 20px;
+  margin-top: 20px;
+}
+
+.filtro-precios > legend {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.campo-precio {
+  min-width: 0;
+}
+
+.campo-precio input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+  .filtro-precios {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

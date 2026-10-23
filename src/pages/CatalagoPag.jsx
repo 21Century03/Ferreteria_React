@@ -1,72 +1,56 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+
 import CatalogoTemplate from "../components/templates/CatalogoTemplate";
 import Catalogo from "../components/organisms/Catalogo";
-import MenuFiltros from "../components/organisms/MenuFiltros";
+import FiltroCatalogo from "../components/organisms/FiltroCatalogo";
+import BarraBusqueda from "../components/molecules/BarraBusqueda";
+
 import { useInventario } from "../data/CopiaInventario";
+import { procesarCatalogo } from "../Service/ValidacionesFiltro";
 
-function CatalogoPag() {
-  const inventario = useInventario();
+export default function CatalogoPag() {
+  const { productos = [] } = useInventario();
 
-  // Estados del filtro 
   const [busqueda, setBusqueda] = useState("");
-  const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState({});
-  const [precioMin, setPrecioMin] = useState("");
-  const [precioMax, setPrecioMax] = useState("");
 
-  // Busca si hay una categoria marcada
-  let hayCategoriaMarcada = false;
-  for (const nombreCategoria in categoriasSeleccionadas) {
-    if (categoriasSeleccionadas[nombreCategoria] === true) {
-      hayCategoriaMarcada = true;
-    }
-  }
+  const [filtros, setFiltros] = useState({
+    categorias: [],
+    precioMin: "",
+    precioMax: ""
+  });
 
-  const textoBuscado = busqueda.toLowerCase();
-  const productosFiltrados = [];
-
-  for (let i = 0; i < inventario.productos.length; i++) {
-    const producto = inventario.productos[i];
-    const precio = Number(producto["P. Venta (CLP)"]);
-    const nombreProducto = producto["Nombre del producto"].toLowerCase();
-
-    let pasaBusqueda = true;
-    if (textoBuscado !== "" && nombreProducto.includes(textoBuscado) === false) {
-      pasaBusqueda = false;
-    }
-
-    let pasaCategoria = true;
-    if (hayCategoriaMarcada === true) {
-      pasaCategoria = categoriasSeleccionadas[producto["Categoría"]] === true;
-    }
-
-    let pasaPrecio = true;
-    if (precioMin !== "" && precio < Number(precioMin)) {
-      pasaPrecio = false;
-    }
-    if (precioMax !== "" && precio > Number(precioMax)) {
-      pasaPrecio = false;
-    }
-
-    if (pasaBusqueda === true && pasaCategoria === true && pasaPrecio === true) {
-      productosFiltrados.push(producto);
-    }
-  }
+  const resultadoCatalogo = useMemo(() => {
+    return procesarCatalogo(
+      productos,
+      filtros,
+      busqueda
+    );
+  }, [productos, filtros, busqueda]);
 
   return (
     <CatalogoTemplate>
-      <MenuFiltros
-        busqueda={busqueda}
-        setBusqueda={setBusqueda}
-        categoriasSeleccionadas={categoriasSeleccionadas}
-        setCategoriasSeleccionadas={setCategoriasSeleccionadas}
-        precioMin={precioMin}
-        setPrecioMin={setPrecioMin}
-        precioMax={precioMax}
-        setPrecioMax={setPrecioMax}
+      <section className="catalogo-controles">
+        <BarraBusqueda
+          valor={busqueda}
+          onChange={setBusqueda}
+        />
+
+        <FiltroCatalogo
+          categoriasDisponibles={
+            resultadoCatalogo.categoriasDisponibles
+          }
+          filtros={filtros}
+          onFiltrosChange={setFiltros}
+          errores={
+            resultadoCatalogo.validacionPrecio.errores
+          }
+        />
+      </section>
+
+      <Catalogo
+        productos={resultadoCatalogo.productosFiltrados}
+        mensajeVacio={resultadoCatalogo.mensajeVacio}
       />
-      <Catalogo productos={productosFiltrados} />
     </CatalogoTemplate>
   );
 }
-
-export default CatalogoPag;

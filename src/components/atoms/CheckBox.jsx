@@ -1,6 +1,6 @@
 export function CheckBox(props) {
   return (
-    <section className="form-check ms-2 mb-1">
+    <section >
       <input
             className="form-check-input"
             type="checkbox"
@@ -8,7 +8,7 @@ export function CheckBox(props) {
             checked={props.checked}
             onChange={props.onChange}
       />
-      <label className="form-check-label small" htmlFor={props.id}>
+      <label  htmlFor={props.id}>
         {props.label}
       </label>
     </section>
