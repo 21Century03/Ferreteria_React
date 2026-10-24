@@ -31,7 +31,7 @@ const archivoPorCodigo = {
   PT005: "esmalteSintetico.jpg",
   PT006: "antihumedad.webp",
   PT007: "RodilloLana23.jpg",
-  PT008: "Brocha3.png",
+  PT008: "Brocha cerda natural 3.webp",
   PT009: "cEnmascarar.webp",
   // Herramientas
   HM001: "mCarpintero.webp",

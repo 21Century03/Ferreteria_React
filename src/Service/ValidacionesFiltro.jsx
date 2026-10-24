@@ -29,8 +29,7 @@ export function validarRangoPrecio(minimo, maximo) {
 
   if (
     !minVacio &&
-    (!Number.isFinite(min) ||
-      !Number.isInteger(min) ||
+    (!Number.isInteger(min) ||
       min < 0)
   ) {
     errores.precioMin =
@@ -39,8 +38,7 @@ export function validarRangoPrecio(minimo, maximo) {
 
   if (
     !maxVacio &&
-    (!Number.isFinite(max) ||
-      !Number.isInteger(max) ||
+    (!Number.isInteger(max) ||
       max < 0)
   ) {
     errores.precioMax =

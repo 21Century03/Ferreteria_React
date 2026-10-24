@@ -1,27 +1,35 @@
-.filtro-precios {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(180px, 220px));
-  justify-content: center;
-  gap: 12px 20px;
-  margin-top: 20px;
+.filtro-categorias {
+  max-width: 460px;
+  margin: 20px auto 0;
+  border: none;
+  padding: 0;
 }
 
-.filtro-precios > legend {
-  grid-column: 1 / -1;
+.filtro-categorias > legend {
   text-align: center;
+  margin-bottom: 12px;
 }
 
-.campo-precio {
-  min-width: 0;
+.filtro-categorias .lista-categorias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
 }
 
-.campo-precio input {
-  width: 100%;
-  box-sizing: border-box;
+.opcion-categoria {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-@media (max-width: 500px) {
-  .filtro-precios {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.opcion-categoria input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
 }

@@ -7,7 +7,7 @@ function Catalogo({
   mensajeVacio = "No hay productos con esos filtros."
 }) {
   return (
-    <section className="catalogo">
+    <section>
       <h2 className="text-center mb-4">
         Catálogo de productos
       </h2>
