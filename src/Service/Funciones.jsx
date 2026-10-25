@@ -26,7 +26,7 @@ export function obtenerBajoStock(productos) {
 
 export function modificarProducto(productos, codigo, nuevoStock) {
   return productos.map((producto) => {
-    if (String(producto["Código"]) !== String(codigo)) {
+    if (String(producto["Código"]) === String(codigo)) {
       return producto
     }
     const copia = Object.assign({}, producto)
