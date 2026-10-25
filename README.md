@@ -21,14 +21,22 @@ src/
 │   ├── organisms/
 │   └── templates/
 └── pages/
+└── Service/
+└── Styles/
+└── Assets/
+└── Data/
+
+
 
 ## Tecnologías
 - React + Vite
 - React Bootstrap
-
+- vitest
 ## Cómo ejecutar el proyecto
 npm install
 npm run dev
+## Ejecutar pruebas 
+npm run test
 
 ## Material complementario
 Carpeta de Drive con documentos del semestre (ERS y otros):
