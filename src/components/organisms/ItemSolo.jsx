@@ -15,7 +15,7 @@ function ItemSolo() {
   const [cantidad, setCantidad] = useState("")
   const [metodoEnvio,setmetodoEnvio] = useState("")
   const inventario = useInventario()
-   const [mensaje, setMensaje] = useState("")
+  const [mensaje, setMensaje] = useState("")
   const sesion = useUsuario()
 
   const producto = inventario.productos.find(

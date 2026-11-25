@@ -5,7 +5,8 @@ import Button from "../atoms/Button"
 import { ValidarNombre, ValidarTelefono, ValidarCorreo, ValidarContrasenia } from "../../Service/ValidacionesFormLogin/Validaciones"
 import "../../Styles/CamposError.css"
 import "../../Styles/Login.css"
-import { useUsuario } from "../../data/UsuarioContext"
+import { registrar as registrarApi } from "../../api/authApi"
+import { mensajeDeError } from "../../api/axiosClient"
 
 const CrearUsuario = () => {
   const [nombre, setNombre] = useState("")
@@ -30,9 +31,8 @@ const CrearUsuario = () => {
   const [EsCorrecto, setEsCorrecto] = useState(false)
 
   const navigate = useNavigate()
-  const sesion = useUsuario()
 
-  const registrar = () => {
+  const registrar = async () => {
     setMensajeExito("")
 
     const resNombre = ValidarNombre(nombre)
@@ -68,17 +68,16 @@ const CrearUsuario = () => {
       return
     }
 
-    const resultado = sesion.registrarUsuario({
-      nombre: nombre.trim(),
-      telefono: telefono,
-      correo: correo,
-      contrasenia: contrasenia,
-    })
-
-    if (!resultado.ok) {
-      // Por ejemplo: el correo ya está registrado
+    try {
+      await registrarApi({
+        nombre: nombre.trim(),
+        correo: correo.trim().toLowerCase(),
+        telefono: telefono.trim(),
+        password: contrasenia,
+      })
+    } catch (err) {
       setClaseCorreo("is-invalid")
-      setMensajeCorreo(resultado.mensaje)
+      setMensajeCorreo(mensajeDeError(err))
       setEsCorrecto(false)
       return
     }

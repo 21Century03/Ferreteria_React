@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { agregarVisto, crearCompra } from "../Service/FuncionesUsuario"
-
+import { login, obtenerPerfil } from "../api/authApi"
+import { guardarToken, borrarToken, leerToken } from "../api/axiosClient"
 
 const UsuarioContext = createContext(null)
 
@@ -17,13 +18,21 @@ function cargarGuardado(clave, valorInicial) {
 }
 
 export function UsuarioProvider(props) {
-  const [usuario, setUsuario] = useState(() => cargarGuardado("usuario", null))
+  const [usuario, setUsuario] = useState(null)
   const [vistos, setVistos] = useState(() => cargarGuardado("vistos", []))
   const [compras, setCompras] = useState(() => cargarGuardado("compras", []))
 
   useEffect(() => {
-    localStorage.setItem("usuario", JSON.stringify(usuario))
-  }, [usuario])
+    if (!leerToken()) return
+    obtenerPerfil().then(setUsuario).catch(() => borrarToken())
+  }, [])
+
+ 
+  useEffect(() => {
+    const alExpirar = () => setUsuario(null)
+    window.addEventListener("sesion-expirada", alExpirar)
+    return () => window.removeEventListener("sesion-expirada", alExpirar)
+  }, [])
 
   useEffect(() => {
     localStorage.setItem("vistos", JSON.stringify(vistos))
@@ -33,11 +42,16 @@ export function UsuarioProvider(props) {
     localStorage.setItem("compras", JSON.stringify(compras))
   }, [compras])
 
-  const iniciarSesion = (datos) => {
-    setUsuario(datos)
+  const iniciarSesion = async (correo, password) => {
+    const { accessToken } = await login(correo, password)
+    guardarToken(accessToken)
+    const perfil = await obtenerPerfil()
+    setUsuario(perfil)
+    return perfil
   }
 
   const cerrarSesion = () => {
+    borrarToken()
     setUsuario(null)
   }
 
@@ -57,23 +71,6 @@ export function UsuarioProvider(props) {
       ...actual,
     ])
   }
-  // cosas para el crear usuarios
-
-const [usuarios, setUsuarios] = useState(() => cargarGuardado("usuarios", []))
-
-useEffect(() => {
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
-}, [usuarios])
-
-const registrarUsuario = (datos) => {
-  const correo = datos.correo.trim().toLowerCase()
-  const existe = usuarios.some((u) => u.correo === correo)
-  if (existe) {
-    return { ok: false, mensaje: "Ese correo ya está registrado" }
-  }
-  setUsuarios((actual) => [...actual, { ...datos, correo: correo }])
-  return { ok: true, mensaje: "" }
-}
 
   const valor = {
     usuario: usuario,
@@ -83,9 +80,6 @@ const registrarUsuario = (datos) => {
     cerrarSesion: cerrarSesion,
     registrarVisto: registrarVisto,
     registrarCompra: registrarCompra,
-    usuario: usuario,
-    usuarios: usuarios,
-    registrarUsuario: registrarUsuario
   }
 
   return (
@@ -98,4 +92,3 @@ const registrarUsuario = (datos) => {
 export function useUsuario() {
   return useContext(UsuarioContext)
 }
-
