@@ -9,7 +9,7 @@ import "../../Styles/CamposError.css"
 import "../../Styles/Login.css"
 
 const FormularioIndex = () => {
-  const [correo, setCorreo] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const [ClaseCorreo, setClaseCorreo] = useState("")
@@ -26,7 +26,7 @@ const FormularioIndex = () => {
     e.preventDefault()
     setError("")
 
-    const resCorreo = ValidarCorreo(correo)
+    const resCorreo = ValidarCorreo(email)
     const resContrasenia = ValidarContrasenia(password)
 
     setClaseCorreo(resCorreo.className)
@@ -39,8 +39,9 @@ const FormularioIndex = () => {
     if (!valido) return
 
     try {
-      const perfil = await iniciarSesion(correo.trim().toLowerCase(), password)
-      navigate(perfil.rol === "admin" ? "/administrador" : "/usuario")
+      const perfil = await iniciarSesion(email.trim().toLowerCase(), password)
+      const esAdmin = perfil?.rol?.toLowerCase().includes("admin")
+      navigate(esAdmin ? "/administrador" : "/usuario")
     } catch (err) {
       setError(mensajeDeError(err))
     }
@@ -49,10 +50,10 @@ const FormularioIndex = () => {
   return (
     <form onSubmit={manejarSubmit} noValidate>
       <InputMoIndex
-        id="correo"
+        id="email"
         label="Correo"
-        value={correo}
-        onChange={(e) => setCorreo(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Escribe tu Correo"
         className={ClaseCorreo}
       />

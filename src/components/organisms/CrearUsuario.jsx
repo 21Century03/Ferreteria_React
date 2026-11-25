@@ -11,7 +11,7 @@ import { mensajeDeError } from "../../api/axiosClient"
 const CrearUsuario = () => {
   const [nombre, setNombre] = useState("")
   const [telefono, setTelefono] = useState("")
-  const [correo, setCorreo] = useState("")
+  const [email, setEmail] = useState("")
   const [contrasenia, setContrasenia] = useState("")
   const [repetir, setRepetir] = useState("")
 
@@ -37,10 +37,9 @@ const CrearUsuario = () => {
 
     const resNombre = ValidarNombre(nombre)
     const resTelefono = ValidarTelefono(telefono)
-    const resCorreo = ValidarCorreo(correo)
+    const resCorreo = ValidarCorreo(email)
     const resContrasenia = ValidarContrasenia(contrasenia)
 
-    // La confirmación debe ser igual a la contraseña
     const coinciden = contrasenia === repetir && repetir !== ""
 
     setClaseNombre(resNombre.className)
@@ -71,7 +70,7 @@ const CrearUsuario = () => {
     try {
       await registrarApi({
         nombre: nombre.trim(),
-        correo: correo.trim().toLowerCase(),
+        email: email.trim().toLowerCase(),
         telefono: telefono.trim(),
         password: contrasenia,
       })
@@ -109,10 +108,10 @@ const CrearUsuario = () => {
       {MensajeTelefono && <p className="MensajeError">{MensajeTelefono}</p>}
 
       <InputMoIndex
-        id="correo"
+        id="email"
         label="Correo"
-        value={correo}
-        onChange={(e) => setCorreo(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Escribe tu Correo"
         className={ClaseCorreo}
       />

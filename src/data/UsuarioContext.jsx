@@ -42,8 +42,8 @@ export function UsuarioProvider(props) {
     localStorage.setItem("compras", JSON.stringify(compras))
   }, [compras])
 
-  const iniciarSesion = async (correo, password) => {
-    const { accessToken } = await login(correo, password)
+  const iniciarSesion = async (email, password) => {
+    const { accessToken } = await login(email, password)
     guardarToken(accessToken)
     const perfil = await obtenerPerfil()
     setUsuario(perfil)
@@ -59,7 +59,7 @@ export function UsuarioProvider(props) {
     if (!usuario) {
       return
     }
-    setVistos((actual) => agregarVisto(actual, usuario.correo, codigo))
+    setVistos((actual) => agregarVisto(actual, usuario.email, codigo))
   }
 
   const registrarCompra = (items, subtotal, totalConIva) => {
@@ -67,7 +67,7 @@ export function UsuarioProvider(props) {
       return
     }
     setCompras((actual) => [
-      crearCompra(usuario.correo, items, subtotal, totalConIva),
+      crearCompra(usuario.email, items, subtotal, totalConIva),
       ...actual,
     ])
   }
