@@ -74,6 +74,7 @@ export function UsuarioProvider(props) {
 
   const valor = {
     usuario: usuario,
+    actualizarUsuario: setUsuario,
     vistos: vistos,
     compras: compras,
     iniciarSesion: iniciarSesion,
